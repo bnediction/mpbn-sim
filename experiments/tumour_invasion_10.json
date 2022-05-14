@@ -1,0 +1,29 @@
+{
+    "bnet_file": "models/Tumour_invasion.bnet",
+    "label_attractor": [
+        ["lambda a: a['Metastasis'] == 1", "Metastasis"],
+        ["lambda a: a['Apoptosis'] == 1", "Apoptosis"],
+        ["lambda a: a['Invasion'] == 1", "Invasion"],
+        ["lambda a: a['EMT'] == 1", "EMT"],
+        "HS"
+    ],
+    "init_active": ["miR200", "miR203", "miR34", "DNAdamage"],
+    "nb_sims": 10000,
+    "mutants": {
+        "p53 LoF": {
+            "p53": "0"
+        },
+        "NICD GoF": {
+            "NICD": "1"
+        }
+    },
+    "experiments": [
+        {"name": "maboss", "nb_steps": 10000},
+        {"name": "mpsim",
+            "rates": "uniform",
+            "depth": "constant_maximum"},
+        {"name": "mpsim",
+            "rates": "uniform",
+            "depth": "nexponential"}
+    ]
+}

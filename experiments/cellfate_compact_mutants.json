@@ -1,0 +1,88 @@
+{
+    "f": {
+        "TNF" : "TNF",
+        "FAS" : "FAS",
+        "RIP1" : "!C8 & (TNF | FAS)",
+        "NFkB" : "(cIAP & RIP1) & !C3",
+        "C8" : "(TNF | FAS | C3) & !NFkB",
+        "cIAP" : "(NFkB | cIAP) & !MOMP",
+        "ATP" : "!MPT",
+        "C3" : "ATP & MOMP & !NFkB",
+        "ROS" : "!NFkB & (RIP1 | MPT)",
+        "MOMP" : "MPT | (C8 & !NFkB)",
+        "MPT" : "ROS & !NFkB",
+        "Apoptosis" : "C3",
+        "NonACD" : "!ATP",
+        "Survival" : "NFkB"},
+    "init_active": ["cIAP", "ATP", "TNF"],
+    "label_attractor": [
+        ["lambda a: a['Survival'] == 1", "S"],
+        ["lambda a: a['Apoptosis'] == 1", "A"],
+        ["lambda a: a['NonACD'] == 1", "N"],
+        "Z"
+    ],
+    "mutants": {
+        "Anti-oxidant": {
+                "ROS": "RIP1 | MPT"
+            },
+        "APAF1 deletion": {
+                "C3": "0"
+            },
+        "BAX deletion": {
+                "MOMP": "MPT"
+            },
+        "BCL2 over-expression": {
+                "MOMP": "MPT",
+                "MPT": "0"
+            },
+        "CASP8 deletion": {
+                "C8": "0"
+            },
+        "constitutively activated CASP8": {
+                "C8": "1"
+            },
+        "cFLIP deletion": {
+                "C8": "TNF | FAS | C3"
+            },
+        "cIAP deletion": {
+                "cIAP": "0"
+            },
+        "FADD deletion": {
+                "C8": "C3 & !NFkB",
+                "RIP1": "!C8 & TNF"
+            },
+        "NFkB deletion": {
+                "NFkB": "0"
+            },
+        "constitutively activated NFkB": {
+                "NFkB": "1"
+            },
+        "RIP1 deletion": {
+                "RIP1": "0"
+            },
+        "XIAP deletion": {
+                "C3": "ATP & MOMP"
+            },
+        "z-VAD + RIP1 deletion": {
+                "C3": "0",
+                "C8": "0",
+                "RIP1": "0"
+            }
+    },
+    "nb_sims": 10000,
+    "experiments": [
+        {"name": "mpsim",
+            "rates": "fully_asynchronous",
+            "depth": "constant_unitary"},
+        {"name": "mpsim",
+            "rates": "uniform",
+            "depth": "constant_unitary"},
+        {"name": "mpsim",
+            "rates": "uniform",
+            "depth": "constant_maximum"},
+        {"name": "mpsim",
+            "rates": "uniform",
+            "depth": "nexponential"}
+    ]
+}
+
