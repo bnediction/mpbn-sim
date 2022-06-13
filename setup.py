@@ -28,7 +28,7 @@ setup(name=NAME,
     ],
     entry_points={
         "console_scripts": [
-            "mpbn_sim=mpbn_sim.cli",
+            "mpbn_sim=mpbn_sim:cli",
         ],
     },
     packages=[NAME],
