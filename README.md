@@ -1,5 +1,11 @@
 # Simulation of Most Permissive Boolean networks
 
+
+⚠️⚠️⚠️⚠ **THIS MODULE IS DEPRECATED IN FAVOR OF [mpbn](https://github.com/bnediction/mpbn)** ⚠️⚠️⚠️
+
+Since version 2.0, `mpbn` ships the `mpbn.simulation` module and `mpbn-sim` command line.
+It is integrated in the [CoLoMoTo Docker image](https://colomoto.github.io/notebook/) since version `2022-12-01`.
+
 ## Installation
 
 ```
